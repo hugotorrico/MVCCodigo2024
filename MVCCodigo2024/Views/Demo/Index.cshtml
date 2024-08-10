@@ -4,9 +4,17 @@
 }
 
 <h2>@Session["Mensaje"]</h2>
-<h2>@ViewBag.Mensaje</h2>
-<h2>@ViewBag.FechaHora</h2>
-<h2>@ViewBag.Saludo</h2>
+
+
+@{
+    for (int i = 0; i < 5; i++)
+    {
+        <h1>@ViewBag.Mensaje</h1>
+        <h1>@ViewBag.FechaHora</h1>
+        <h1>@ViewBag.Saludo</h1>
+    }
+}
+
 
 
 <form action='/submit' method='post'>
