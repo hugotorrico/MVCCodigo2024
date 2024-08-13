@@ -191,10 +191,10 @@
     <Content Include="Views\Demo\Table.cshtml" />
     <Content Include="Views\Productos\Listar.cshtml" />
     <Content Include="Views\Productos\BuscarPorID.cshtml" />
+    <Content Include="Views\ProductosClientes\Listar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ProductosClientes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
