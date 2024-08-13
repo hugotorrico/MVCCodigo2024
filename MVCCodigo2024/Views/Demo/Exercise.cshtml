@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Exercise";
+}
+
+@{
+    var nombre = "Hugo";
+}
+
+<h1>@("Bienvenido" + nombre)</h1>
+
+
+@{
+    var edad = 15;
+}
+
+@if (edad > 18)
+{
+    <h1>Es mayor de edad</h1>
+}
+else {
+
+<h1>Es menor de edad</h1>
+
+}
+
+@for (int i = 0; i < 5; i++)
+{
+
+    @(i+1)<br />
+}

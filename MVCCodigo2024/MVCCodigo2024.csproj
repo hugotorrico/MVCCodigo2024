@@ -182,6 +182,8 @@
     <Content Include="Views\Demo\Index.cshtml" />
     <Content Include="Views\Demo\ListarPersonas.cshtml" />
     <Content Include="Views\Demo\Example.cshtml" />
+    <Content Include="Views\Demo\Exercise.cshtml" />
+    <Content Include="Views\Demo\Table.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

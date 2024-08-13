@@ -61,5 +61,15 @@ namespace MVCCodigo2024.Controllers
             return View();
         }
 
+        public ActionResult Exercise()
+        {
+            return View();
+        }
+
+        public ActionResult Table()
+        {
+            return View();
+        }
+
     }
 }
