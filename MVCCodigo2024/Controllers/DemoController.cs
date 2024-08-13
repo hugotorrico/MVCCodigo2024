@@ -70,6 +70,7 @@ namespace MVCCodigo2024.Controllers
         {
             return View();
         }
+       
 
     }
 }
