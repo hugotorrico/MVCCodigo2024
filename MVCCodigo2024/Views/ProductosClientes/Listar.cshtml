@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Listar";
 }
-@model List<MVCCodigo2024.Models.ProductoCliente>
+@model  MVCCodigo2024.Models.ProductoCliente
 
 <style>
     table {
@@ -33,7 +33,7 @@
         </tr>
     </thead>
     <tbody>
-        @*@foreach (var producto in Model.Productos)
+        @foreach (var producto in  ((MVCCodigo2024.Models.ProductoCliente)Model).Productos)
         {
             <tr>
                 <td>@producto.Id</td>
@@ -41,31 +41,27 @@
                 <td>@producto.Precio</td>
                 <td>@producto.Cantidad</td>
             </tr>
-        }*@
+        }
     </tbody>
 </table>
 
 
-<h2>Listar Productos</h2>
+<h2>Listar Clientes</h2>
 
 <table>
     <thead>
         <tr>
             <th>ID</th>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
+            <th>Nombres</th>           
         </tr>
     </thead>
     <tbody>
-        @*@foreach (var producto in Model.Clientes)
+        @foreach (var cliente in ((MVCCodigo2024.Models.ProductoCliente)Model).Clientes)
         {
             <tr>
-                <td>@producto.Id</td>
-                <td>@producto.Nombre</td>
-                <td>@producto.Precio</td>
-                <td>@producto.Cantidad</td>
+                <td>@cliente.Id</td>
+                <td>@cliente.Nombres</td>               
             </tr>
-        }*@
+        }
     </tbody>
 </table>
