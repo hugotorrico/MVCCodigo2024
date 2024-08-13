@@ -56,9 +56,10 @@ namespace MVCCodigo2024.Controllers
             return View();
         }
 
-
-
-
+        public ActionResult Example()
+        {
+            return View();
+        }
 
     }
 }
