@@ -17,7 +17,7 @@ namespace MVCEFCCodigo2024.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            return View(db.Products.ToList());
+            return View(db.Products.Where(x=>x.IsActive==true).ToList());
         }
 
         // GET: Products/Details/5
@@ -46,10 +46,12 @@ namespace MVCEFCCodigo2024.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,Name,Price,IsActive,CreatedDate")] Products products)
+        public ActionResult Create([Bind(Include = "ProductID,Name,Price")] Products products)
         {
             if (ModelState.IsValid)
             {
+                products.IsActive = true;
+                products.CreatedDate = DateTime.Now;
                 db.Products.Add(products);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -78,11 +80,16 @@ namespace MVCEFCCodigo2024.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,Name,Price,IsActive,CreatedDate")] Products products)
+        public ActionResult Edit([Bind(Include = "ProductID,Name,Price")] Products products)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(products).State = EntityState.Modified;
+
+                var productModify = db.Products.Where(x => x.ProductID == products.ProductID).FirstOrDefault();            
+                db.Entry(productModify).State = EntityState.Modified;
+                productModify.Price = products.Price;
+                productModify.Name = products.Name;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -110,7 +117,9 @@ namespace MVCEFCCodigo2024.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Products products = db.Products.Find(id);
-            db.Products.Remove(products);
+            //db.Products.Remove(products);
+            db.Entry(products).State = EntityState.Modified;
+            products.IsActive = false;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
