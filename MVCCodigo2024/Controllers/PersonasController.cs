@@ -84,16 +84,19 @@ namespace MVCCodigo2024.Controllers
         // GET: Personas/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Persona persona = ((List<Persona>)Session["Personas"]).Where(x => x.Id == id).FirstOrDefault();   
+            return View(persona);
         }
 
         // POST: Personas/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, Persona collection)
+        public ActionResult Delete(int id, Persona persona)
         {
             try
-            {
-                // TODO: Add delete logic here
+            {                            
+                //Busco a la persona que voy a eliminar
+                Persona personaEliminar = ((List<Persona>)Session["Personas"]).Where(x => x.Id == id).FirstOrDefault();
+                ((List<Persona>)Session["Personas"]).Remove(personaEliminar);    
 
                 return RedirectToAction("Index");
             }
