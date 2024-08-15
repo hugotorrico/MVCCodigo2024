@@ -33,7 +33,8 @@ namespace MVCCodigo2024.Controllers
         // GET: Personas/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Persona persona = ((List<Persona>)Session["Personas"]).Where(x => x.Id == id).FirstOrDefault();
+            return View(persona);
         }
 
         // GET: Personas/Create
@@ -47,7 +48,9 @@ namespace MVCCodigo2024.Controllers
         public ActionResult Create(Persona persona)
         {
             try
-            {
+            {               
+                int maxId = ((List<Persona>)Session["Personas"]).Max(p => p.Id);
+                persona.Id = maxId + 1;
                 // TODO: Add insert logic here
                 ((List<Persona>)Session["Personas"]).Add(persona);
 
@@ -62,7 +65,9 @@ namespace MVCCodigo2024.Controllers
         // GET: Personas/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Persona persona = ((List<Persona>)Session["Personas"]).Where(x => x.Id == id).FirstOrDefault();
+            return View(persona);
+       
         }
 
         // POST: Personas/Edit/5
@@ -72,6 +77,11 @@ namespace MVCCodigo2024.Controllers
             try
             {
                 // TODO: Add update logic here
+
+                //Busco a la persona que voy a eliminar
+                Persona personEditar = ((List<Persona>)Session["Personas"]).Where(x => x.Id == id).FirstOrDefault();
+                personEditar.Nombres = persona.Nombres;
+                personEditar.Apellidos = persona.Apellidos;
 
                 return RedirectToAction("Index");
             }
