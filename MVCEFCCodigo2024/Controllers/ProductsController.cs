@@ -27,7 +27,7 @@ namespace MVCEFCCodigo2024.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Products products = db.Products.Find(id);
+            Products products = db.Products.Where(x => x.ProductID == id && x.IsActive == true).FirstOrDefault();
             if (products == null)
             {
                 return HttpNotFound();
@@ -67,7 +67,7 @@ namespace MVCEFCCodigo2024.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Products products = db.Products.Find(id);
+            Products products = db.Products.Where(x => x.ProductID == id && x.IsActive == true).FirstOrDefault();
             if (products == null)
             {
                 return HttpNotFound();
@@ -103,7 +103,7 @@ namespace MVCEFCCodigo2024.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Products products = db.Products.Find(id);
+            Products products = db.Products.Where(x=>x.ProductID==id && x.IsActive==true).FirstOrDefault();
             if (products == null)
             {
                 return HttpNotFound();
