@@ -17,7 +17,7 @@ namespace MVCEFCCodigo2024.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            return View(db.Products.Where(x=>x.IsActive==true).ToList());
+            return View(db.Products.Where(x => x.IsActive == true).ToList());
         }
 
         // GET: Products/Details/5
@@ -38,7 +38,8 @@ namespace MVCEFCCodigo2024.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
-            return View();
+            Products model = new Products();
+            return View(model);
         }
 
         // POST: Products/Create

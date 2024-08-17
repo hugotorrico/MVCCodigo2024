@@ -1,0 +1,70 @@
+﻿
+@model  MvcCodigoPartials.Models.Usuario
+
+<style>
+    #errorMensaje {
+        color: red;
+        display: none; /* Ocultar el mensaje por defecto */
+    }
+</style>
+
+<form asp-action="@(Model.Id == 0 ? "Create" : "Edit")" method="post">
+    <div class="form-group">
+        <label for="Nombre">Nombre</label>
+        <input type="text" class="form-control" id="Nombre" name="Nombre" value="@Model.Nombre" />
+        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+        <span id="errorMensaje">Por favor, ingresa tu nombre.</span>
+    </div>
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email" />
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="Edad">Edad</label>
+        <input type="text" class="form-control" id="Edad" name="Edad" value="@Model.Edad" />
+        @Html.ValidationMessageFor(model => model.Edad, "", new { @class = "text-danger" })
+
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="button" onclick="validarFormulario2()">Guardar Click</button>
+</form>
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    function validarFormulario() {
+  
+    var nombre = document.getElementById("Nombre").value;
+
+    if (nombre.trim() === "") {
+        alert("Por favor, ingresa tu nombre.");
+        return false;
+    } else {
+        alert("Formulario enviado correctamente.");
+        // Aquí puedes agregar la lógica para enviar el formulario si es necesario.
+        return true;
+    }
+ }
+
+ function validarFormulario2() {
+     var nombre = document.getElementById("Nombre").value;
+        var errorMensaje = document.getElementById("errorMensaje");
+
+        if (nombre.trim() === "") {
+            errorMensaje.style.display = "inline";
+        } else {
+            errorMensaje.style.display = "none";
+            alert("Formulario enviado correctamente.");
+            // Aquí puedes agregar la lógica para enviar el formulario si es necesario.
+        }
+    }
+
+
+</script>
